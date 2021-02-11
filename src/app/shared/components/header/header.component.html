@@ -1,0 +1,28 @@
+<mat-toolbar class="header">
+  <div>
+    <button mat-button
+            class="header-button"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">
+      <a routerLink="">
+        Provider
+        <i class="fas fa-list icon"></i></a>
+    </button>
+
+    <button mat-button
+            class="header-button"
+            routerLinkActive="active">
+      <a routerLink="/favorites">
+        Favorites
+        <i class="fas fa-heart icon"></i></a>
+    </button>
+  </div>
+
+  <div class="header-title">
+    Save funny jokes to favorites!
+    <i class="far fa-grin-squint-tears icon"></i>
+    <i class="far fa-grin-beam icon"></i>
+  </div>
+</mat-toolbar>
+
+

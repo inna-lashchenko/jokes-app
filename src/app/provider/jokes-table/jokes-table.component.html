@@ -1,0 +1,67 @@
+<table mat-table [dataSource]="jokes"
+       matSort
+       class="mat-elevation-z8"
+       matSortDirection="asc"
+       (matSortChange)="sortData($event)">
+
+  <ng-container matColumnDef="number">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>#</th>
+    <td mat-cell *matCellDef="let element let i = index">
+      {{ i + 1 }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="favorite">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button color="primary" (click)="updateFavorite(element)">
+        <mat-icon>{{ element.favorite ? 'favorite' : 'favorite_border' }}</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Type</th>
+    <td mat-cell *matCellDef="let element">{{ element.type| titlecase }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="setup">
+    <th mat-header-cell *matHeaderCellDef>Setup</th>
+    <td mat-cell *matCellDef="let element">{{ element.setup }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="punchline">
+    <th mat-header-cell *matHeaderCellDef>Punchline</th>
+    <td mat-cell *matCellDef="let element">{{ element.punchline }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="comment">
+    <th mat-header-cell *matHeaderCellDef>Comment</th>
+    <td mat-cell *matCellDef="let element" class="comment">
+      <input
+        #input
+        class="comment-input"
+        matInput
+        [ngModel]="element.comment">
+      <mat-icon class="edit-icon"
+                *ngIf="checkActiveSave(element.comment, input.value)"
+                (click)="saveComment(element, input.value)">save</mat-icon>
+      <mat-icon *ngIf="element.comment"
+                class="edit-icon"
+                (click)="deleteComment(element)">close</mat-icon>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columns"></tr>
+  <tr mat-row *matRowDef="let row; columns: columns;" ngClass="cell-class"></tr>
+</table>
+
+<div *ngIf="!isLoading && jokes.length < 50"
+     class="load-jokes">
+  <button mat-button (click)="onLoadMoreJokes()">
+    <mat-icon>arrow_circle_down</mat-icon>
+    Load more jokes
+  </button>
+</div>
+
+<app-spinner *ngIf="isLoading"></app-spinner>
