@@ -1,6 +1,6 @@
 import {createSelector} from '@ngrx/store';
 
-import {AppState, JokesState} from './store.interface';
+import {AppState, AuthState, JokesState} from './store.interface';
 
 export const randomJokes = (state: AppState): JokesState => {
   return state.randomJokes;
@@ -8,6 +8,10 @@ export const randomJokes = (state: AppState): JokesState => {
 
 export const programmingJokes = (state: AppState): JokesState => {
   return state.programmingJokes;
+};
+
+export const authState = (state: AppState): AuthState => {
+  return state.auth;
 };
 
 export const selectAllFavoriteJokes = createSelector(

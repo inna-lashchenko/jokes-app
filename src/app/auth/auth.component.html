@@ -1,0 +1,55 @@
+<div class="row login-form">
+  <div class="alert alert-danger" *ngIf="error">
+    <p>{{ error }}</p>
+  </div>
+
+  <div *ngIf="isLoading" style="text-align: center;">
+    <app-spinner></app-spinner>
+  </div>
+
+  <form #authForm="ngForm" *ngIf="!isLoading">
+    <div class="form-group">
+      <label for="email">E-Mail</label>
+      <input
+        type="email"
+        id="email"
+        class="form-control"
+        ngModel
+        name="email"
+        required
+        email
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        class="form-control"
+        ngModel
+        name="password"
+        required
+        minlength="6"
+      />
+    </div>
+
+    <div>
+      <button
+        class="btn btn-primary"
+        [disabled]="!authForm.valid"
+        (click)="onSubmit(authForm, true)">
+        {{ 'Login' }}
+      </button>
+
+      <button class="btn btn-primary"
+              (click)="onSubmit(authForm, false)"
+              [disabled]="!authForm.valid"
+              type="button">
+        {{ 'Sign Up' }}
+      </button>
+    </div>
+  </form>
+
+  <img *ngIf="!isLoading" src="../../assets/images/waiting-for-you-to-come-back.jpg" class="login-picture">
+</div>

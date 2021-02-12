@@ -27,6 +27,16 @@
       font-size: 25px;
     }
   }
+
+  .auth {
+    cursor: pointer;
+    margin-right: 15px;
+    color: antiquewhite;
+    font-weight: 900;
+    border: 1px solid antiquewhite;
+    border-radius: 25px;
+    padding: 9px 15px;
+  }
 }
 
 button.mat-focus-indicator.header-button.mat-button.mat-button-base.active {

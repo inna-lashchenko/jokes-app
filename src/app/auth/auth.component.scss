@@ -1,0 +1,19 @@
+.login-form {
+  margin-top: 20px;
+  text-align: center;
+
+  form {
+    width: 300px;
+    margin: 0 auto;
+
+    .btn-primary {
+      margin-left: 10px;
+    }
+  }
+
+  .login-picture {
+    display: block;
+    margin: 0 auto;
+    padding-top:60px;
+  }
+}

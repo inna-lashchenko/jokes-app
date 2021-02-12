@@ -23,6 +23,12 @@
     <i class="far fa-grin-squint-tears icon"></i>
     <i class="far fa-grin-beam icon"></i>
   </div>
+
+  <div *ngIf="isAuthenticated"
+       class="auth"
+       (click)="onLogout()">
+    Logout
+  </div>
 </mat-toolbar>
 
 
