@@ -24,6 +24,7 @@
     <div class="form-group">
       <label for="password">Password</label>
       <input
+        #password="ngModel"
         type="password"
         id="password"
         class="form-control"
@@ -34,6 +35,9 @@
       />
     </div>
 
+    <span class="error-message" *ngIf="!password.valid && password.dirty">
+      Password must be longer than 6 characters
+    </span>
     <div>
       <button
         class="btn btn-primary"
